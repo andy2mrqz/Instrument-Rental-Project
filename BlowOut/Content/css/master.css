@@ -1,0 +1,18 @@
+﻿/* Linked to site by adding in App_Start/BundleConfig.cs */
+
+.myFooterText {
+    /* Add a class called myFooterText which
+    changes the font to whatever you'd like.*/
+    font-family: Britannic;
+}
+
+.splashImage {
+    max-width: 150px;
+    margin: 10px auto;
+    
+}
+
+.btn-block {
+    max-width: 150px;
+    margin: 0 auto 20px auto;
+}

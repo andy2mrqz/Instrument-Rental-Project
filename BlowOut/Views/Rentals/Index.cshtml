@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <h1>Rentals</h1>
+    <p class="lead">Select the instrument you would like to know more about.</p>
+</div>
+
+<div class="row">
+    <a href="@Url.Action("Instrument", "Rentals", new { instName = "trumpet" })">
+        <figure class="col-md-2">
+            <figcaption class="figure-caption text-center"><b>Trumpet</b></figcaption>
+            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/trumpet.jpg"
+                 alt="Trumpet" data-toggle="tooltip" title="Trumpet" />
+            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
+        </figure>
+    </a>
+    <a href="@Url.Action("Instrument", "Rentals", new { instName = "trombone" })">
+        <figure class="col-md-2">
+            <figcaption class="figure-caption text-center"><b>Trombone</b></figcaption>
+            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/trombone.jpg"
+                 alt="Trombone" data-toggle="tooltip" title="Trombone" />
+            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
+        </figure>
+    </a>
+    <a href="@Url.Action("Instrument", "Rentals", new { instName = "tuba" })">
+        <figure class="col-md-2">
+            <figcaption class="figure-caption text-center"><b>Tuba</b></figcaption>
+            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/tuba.jpg"
+                 alt="Tuba" data-toggle="tooltip" title="Tuba" />
+            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
+        </figure>
+    </a>
+    <a href="@Url.Action("Instrument", "Rentals", new { instName = "flute" })">
+        <figure class="col-md-2">
+            <figcaption class="figure-caption text-center"><b>Flute</b></figcaption>
+            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/flute.jpg"
+                 alt="Flute" data-toggle="tooltip" title="Flute" />
+            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
+        </figure>
+    </a>
+    <a href="@Url.Action("Instrument", "Rentals", new { instName = "clarinet" })">
+        <figure class="col-md-2">
+            <figcaption class="figure-caption text-center"><b>Clarinet</b></figcaption>
+            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/clarinet.jpg"
+                 alt="Clarinet" data-toggle="tooltip" title="Clarinet" />
+            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
+        </figure>
+    </a>
+    <a href="@Url.Action("Instrument", "Rentals", new { instName = "saxophone" })">
+        <figure class="col-md-2">
+            <figcaption class="figure-caption text-center"><b>Saxophone</b></figcaption>
+            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/saxophone.jpg"
+                 alt="Saxophone" data-toggle="tooltip" title="Saxophone" />
+            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
+        </figure>
+    </a>
+</div>

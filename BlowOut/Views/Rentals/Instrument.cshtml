@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Instrument";
+}
+
+<div class="text-center">
+
+    <h1> Rent a @ViewBag.InstrumentName!</h1>
+
+    <img class="img img-responsive img-rounded" src="~/Content/Images/@ViewBag.ImageSource"
+         style="margin: 0 auto; max-width: 200px" />
+    <br />
+
+    @if (ViewBag.Edition == "new")
+    {
+        <a href="@Url.Action("Instrument", "Rentals",
+            new { instName = ViewBag.InstrumentName, edition = "new" })" class="btn btn-lg btn-success">New</a>
+        <a href="@Url.Action("Instrument", "Rentals",
+            new { instName = ViewBag.InstrumentName, edition = "used" })" class="btn btn-lg btn-default">Used</a>
+        <h1>New Price: $@ViewBag.ImagePrices[ViewBag.InstrumentName][0]/month</h1>
+    }
+    else if (ViewBag.Edition == "used")
+    {
+        <a href="@Url.Action("Instrument", "Rentals",
+            new { instName = ViewBag.InstrumentName, edition = "new" })" class="btn btn-lg btn-default">New</a>
+        <a href="@Url.Action("Instrument", "Rentals",
+            new { instName = ViewBag.InstrumentName, edition = "used" })" class="btn btn-lg btn-success">Used</a>
+        <h1>Used Price: $@ViewBag.ImagePrices[ViewBag.InstrumentName][1]/month</h1>
+    }
+    else
+    {
+        <a href="@Url.Action("Instrument", "Rentals",
+            new { instName = ViewBag.InstrumentName, edition = "new" })" class="btn btn-lg btn-default">New</a>
+        <a href="@Url.Action("Instrument", "Rentals",
+            new { instName = ViewBag.InstrumentName, edition = "used" })" class="btn btn-lg btn-default">Used</a>
+        <h1>Choose new or used!*</h1>
+    }
+
+    <br />
+
+    @Html.ActionLink("Back to Instruments List", "Index", "Rentals", new { @class="btn btn-info" })
+
+    <p class="text-muted text-info bg-warning" style="margin-top: 20px">
+    *If you rent the instrument for 18 months, you will own the instrument!  However, if you return it
+    at any time <emp>before</emp> 3 months, there will be a $200 re-stocking fee. If you return it <emp>before</emp>
+    3 months, you forfeit any equity in the instrument.</p>
+</div>
+

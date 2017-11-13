@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Blow Out!";
+}
+
+<div class="row jumbotron">
+    <div class="col-md-9">
+        <h1>Welcome to Blow Out!</h1>
+        <p class="lead">We blow our competitors out of the water.</p>
+    </div>
+    <div class="col-md-3">
+        <img src="~/Content/Images/musical-bar.png" class="img img-responsive" />
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-md-1"></div>
+    <div class="col-md-6 text-justify">
+        <h3>We rent new and used brass instruments to all people, ages, and abilities.</h3>
+        <h4 class="text-muted">Click through to learn how you can rent your instruments today!</h4>
+        <a href="@Url.Action("Index","Rentals")" class="btn btn-lg btn-primary">
+            Go to Instruments
+        </a>
+    </div>
+    <br />
+    <div class="col-md-3">
+        <img src="~/Content/Images/home-instruments.jpg" class="img img-responsive img-rounded"
+             style="max-width: 300px" />
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row text-center">
+    <div class="col-md-12">
+        <p style="padding-top: 20px">
+            <i>
+                "It's easy to play any musical instrument: all you have to do is touch
+                the right key at the right time and the instrument will play itself.”
+            </i>  - Johann Sebastian Bach
+        </p>
+    </div>
+</div>
