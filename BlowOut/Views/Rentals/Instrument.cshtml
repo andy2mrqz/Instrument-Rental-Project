@@ -29,14 +29,10 @@
             new { instrumentID = Model.instrumentID })" class="btn btn-lg btn-success">Used</a>
         <h1>@ViewBag.uppertype Price: $@Model.price/month</h1>
     }
-    else
-    {
-
-    }
 
     @Html.ActionLink("Rent Your Own Today!", "Checkout", "Rentals", new { instrumentID = Model.instrumentID }, new { @class = "btn btn-success btn-lg", @style = "margin-top: 10px" })
     <br /><br />
-    @Html.ActionLink("Back to Instruments", "Index", "Rentals", new { @class="btn btn-info" })
+    @Html.ActionLink("Back to Instruments", "Index", "Rentals")
 
     <p class="text-muted text-info bg-warning" style="margin-top: 20px">
     *If you rent the instrument for 18 months, you will own the instrument!  However, if you return it

@@ -28,14 +28,34 @@ namespace BlowOut.Controllers
             return View(instrument);
         }
 
-        public string Checkout(int instrumentID)
-        {
-            return "You are currently checking out with item: " + instrumentID;
-        }
-
-        public ActionResult Summary(int instrumentID)
+        [HttpGet]
+        public ActionResult Checkout(int instrumentID)
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Checkout([Bind(Include = "clientID,firstname,lastname,address,city,state,zip,email,phone")] Client client, int instrumentID)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Clients.Add(client);
+                db.SaveChanges();
+
+                Instrument instrument = db.Instruments.Find(instrumentID);
+                instrument.clientID = client.clientID;
+                db.SaveChanges();
+
+                return RedirectToAction("Summary", new { clientID = client.clientID, instrumentID = instrumentID  });
+            }
+
+            return View(client);
+        }
+
+        public ActionResult Summary(int clientID, int instrumentID)
+        {
+            return View(new ClientInstrument() { client = db.Clients.Find(clientID), instrument = db.Instruments.Find(instrumentID)});
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model BlowOut.Models.ClientInstrument
+
+@{
+    ViewBag.Title = "Order Summary";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<h4>Thank you for renting with us, @Model.client.firstname!</h4>
+
+<h3>Order Details</h3>
+<div class="row">
+    <div class="col-md-1">
+        <img class="img img-responsive img-rounded" src="~/Content/Images/@Model.instrument.instDescription@(".jpg")"
+             style="max-width: 98px" />
+    </div>
+    <div class="col-md-11">
+        <p class="bg-warning" style="font-family: 'Lucida Sans Typewriter'">
+            <b>
+                @("Order ID".PadRight(40, '.') + Model.client.clientID)<br />
+                @("Instrument".PadRight(40, '.') + Model.instrument.instDescription)<br />
+                @("Instrument Type".PadRight(40, '.') + @Model.instrument.type)<br />
+                @("Monthly Price".PadRight(40, '.') + "$" + Model.instrument.price)<br />
+                @("Total Paid at 18 months".PadRight(40, '.') + "$" + (Model.instrument.price * 18))
+            </b>
+        </p>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Shop for More Instruments", "Index")
+</div>
