@@ -1,44 +1,42 @@
-﻿
+﻿@model BlowOut.Models.Instrument
+
 @{
-    ViewBag.Title = "Instrument";
+    //Capitalize the type name ("New" or "Used")
+    ViewBag.uppertype = char.ToUpper(Model.type[0]) + Model.type.Substring(1);
 }
 
 <div class="text-center">
 
-    <h1> Rent a @ViewBag.InstrumentName!</h1>
+    <h1> Rent a @ViewBag.uppertype @Model.instDescription!</h1>
 
-    <img class="img img-responsive img-rounded" src="~/Content/Images/@ViewBag.ImageSource"
+    <img class="img img-responsive img-rounded" src="~/Content/Images/@Model.instDescription@(".jpg")"
          style="margin: 0 auto; max-width: 200px" />
     <br />
 
-    @if (ViewBag.Edition == "new")
+    @if (Model.type == "new")
     {
         <a href="@Url.Action("Instrument", "Rentals",
-            new { instName = ViewBag.InstrumentName, edition = "new" })" class="btn btn-lg btn-success">New</a>
+            new { instrumentID = Model.instrumentID })" class="btn btn-lg btn-success">New</a>
         <a href="@Url.Action("Instrument", "Rentals",
-            new { instName = ViewBag.InstrumentName, edition = "used" })" class="btn btn-lg btn-default">Used</a>
-        <h1>New Price: $@ViewBag.ImagePrices[ViewBag.InstrumentName][0]/month</h1>
+            new { instrumentID = (Model.instrumentID + 1) })" class="btn btn-lg btn-default">Used</a>
+        <h1>@ViewBag.uppertype Price: $@Model.price/month</h1>
     }
-    else if (ViewBag.Edition == "used")
+    else if (Model.type == "used")
     {
         <a href="@Url.Action("Instrument", "Rentals",
-            new { instName = ViewBag.InstrumentName, edition = "new" })" class="btn btn-lg btn-default">New</a>
+            new { instrumentID = (Model.instrumentID - 1) })" class="btn btn-lg btn-default">New</a>
         <a href="@Url.Action("Instrument", "Rentals",
-            new { instName = ViewBag.InstrumentName, edition = "used" })" class="btn btn-lg btn-success">Used</a>
-        <h1>Used Price: $@ViewBag.ImagePrices[ViewBag.InstrumentName][1]/month</h1>
+            new { instrumentID = Model.instrumentID })" class="btn btn-lg btn-success">Used</a>
+        <h1>@ViewBag.uppertype Price: $@Model.price/month</h1>
     }
     else
     {
-        <a href="@Url.Action("Instrument", "Rentals",
-            new { instName = ViewBag.InstrumentName, edition = "new" })" class="btn btn-lg btn-default">New</a>
-        <a href="@Url.Action("Instrument", "Rentals",
-            new { instName = ViewBag.InstrumentName, edition = "used" })" class="btn btn-lg btn-default">Used</a>
-        <h1>Choose new or used!*</h1>
+
     }
 
-    <br />
-
-    @Html.ActionLink("Back to Instruments List", "Index", "Rentals", new { @class="btn btn-info" })
+    @Html.ActionLink("Rent Your Own Today!", "Checkout", "Rentals", new { instrumentID = Model.instrumentID }, new { @class = "btn btn-success btn-lg", @style = "margin-top: 10px" })
+    <br /><br />
+    @Html.ActionLink("Back to Instruments", "Index", "Rentals", new { @class="btn btn-info" })
 
     <p class="text-muted text-info bg-warning" style="margin-top: 20px">
     *If you rent the instrument for 18 months, you will own the instrument!  However, if you return it
