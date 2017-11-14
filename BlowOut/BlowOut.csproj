@@ -168,6 +168,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\clarinet.jpg" />
     <Content Include="Content\Images\flute.jpg" />
+    <Content Include="Content\Images\founder.jpg" />
     <Content Include="Content\Images\home-instruments.jpg" />
     <Content Include="Content\Images\musical-bar.png" />
     <Content Include="Content\Images\saxophone.jpg" />
