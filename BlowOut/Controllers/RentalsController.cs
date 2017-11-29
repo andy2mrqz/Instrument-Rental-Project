@@ -10,7 +10,6 @@ using System.Net;
 
 namespace BlowOut.Controllers
 {
-
     public class RentalsController : Controller
     {
         private BLOWOUTContext db = new BLOWOUTContext();
