@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<BlowOut.Models.Instrument>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -9,52 +10,18 @@
 </div>
 
 <div class="row">
-    <a href="@Url.Action("Instrument", "Rentals", new { instName = "trumpet" })">
-        <figure class="col-md-2">
-            <figcaption class="figure-caption text-center"><b>Trumpet</b></figcaption>
-            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/trumpet.jpg"
-                 alt="Trumpet" data-toggle="tooltip" title="Trumpet" />
-            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
-        </figure>
-    </a>
-    <a href="@Url.Action("Instrument", "Rentals", new { instName = "trombone" })">
-        <figure class="col-md-2">
-            <figcaption class="figure-caption text-center"><b>Trombone</b></figcaption>
-            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/trombone.jpg"
-                 alt="Trombone" data-toggle="tooltip" title="Trombone" />
-            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
-        </figure>
-    </a>
-    <a href="@Url.Action("Instrument", "Rentals", new { instName = "tuba" })">
-        <figure class="col-md-2">
-            <figcaption class="figure-caption text-center"><b>Tuba</b></figcaption>
-            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/tuba.jpg"
-                 alt="Tuba" data-toggle="tooltip" title="Tuba" />
-            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
-        </figure>
-    </a>
-    <a href="@Url.Action("Instrument", "Rentals", new { instName = "flute" })">
-        <figure class="col-md-2">
-            <figcaption class="figure-caption text-center"><b>Flute</b></figcaption>
-            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/flute.jpg"
-                 alt="Flute" data-toggle="tooltip" title="Flute" />
-            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
-        </figure>
-    </a>
-    <a href="@Url.Action("Instrument", "Rentals", new { instName = "clarinet" })">
-        <figure class="col-md-2">
-            <figcaption class="figure-caption text-center"><b>Clarinet</b></figcaption>
-            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/clarinet.jpg"
-                 alt="Clarinet" data-toggle="tooltip" title="Clarinet" />
-            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
-        </figure>
-    </a>
-    <a href="@Url.Action("Instrument", "Rentals", new { instName = "saxophone" })">
-        <figure class="col-md-2">
-            <figcaption class="figure-caption text-center"><b>Saxophone</b></figcaption>
-            <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/saxophone.jpg"
-                 alt="Saxophone" data-toggle="tooltip" title="Saxophone" />
-            <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
-        </figure>
-    </a>
+    @foreach (var instrument in Model)
+    {
+        if (instrument.type == "new")
+        {
+        <a href="@Url.Action("Instrument", "Rentals", new { instrumentID = instrument.instrumentID })">
+            <figure class="col-md-2">
+                <figcaption class="figure-caption text-center"><b>@instrument.instDescription</b></figcaption>
+                <img class="img img-responsive img-rounded splashImage" src="~/Content/Images/@instrument.instDescription@(".jpg")"
+                     alt="@instrument.instDescription" data-toggle="tooltip" title="@instrument.instDescription" />
+                <figcaption class="figure-caption btn btn-success btn-block">Rent Me!</figcaption>
+            </figure>
+        </a>
+        }
+    }
 </div>
