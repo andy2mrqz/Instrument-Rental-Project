@@ -29,6 +29,7 @@ namespace BlowOut.Controllers
         // GET: Home
         public ActionResult Login(string ReturnUrl)
         {
+
             ViewBag.ReturnUrl = ReturnUrl;
 
             return View();
@@ -44,7 +45,18 @@ namespace BlowOut.Controllers
             {
                 FormsAuthentication.SetAuthCookie(username, rememberMe);
 
-                return Redirect(form["ReturnUrl"].ToString());
+                var test = form["ReturnUrl"].ToString();
+
+                // Checks if it is a valid ReturnUrl (beginning with "/")
+                // The ReturnUrl from the landing page is { String = } and, consquently, fails
+
+                if (form["ReturnUrl"].ToString().StartsWith("/"))
+                {
+                    return Redirect(form["ReturnUrl"].ToString());
+                }
+                
+
+                return RedirectToAction("Index", "Home");
             }
             else
             {

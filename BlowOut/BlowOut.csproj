@@ -162,6 +162,7 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientInstrument.cs" />
     <Compile Include="Models\Instrument.cs" />
+    <Compile Include="Models\OrderInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +241,7 @@
     <Content Include="Views\Rentals\Checkout.cshtml" />
     <Content Include="Views\Rentals\Summary.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Rentals\UpdateData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

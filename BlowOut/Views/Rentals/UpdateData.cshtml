@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BlowOut.Models.OrderInfo>
+
+@{
+    ViewBag.Title = "UpdateData";
+}
+
+<h2> UpdateData </h2>
+<hr />
+
+<h3> Active Orders/Rentals </h3>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Order Number</th>
+            <th>Client Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Instrument</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Update Client</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.clientID</td>
+            <td>@order.clientName</td>
+            <td>@order.address</td>
+            <td>@order.email</td>
+            <td>@order.phone</td>
+            <td>@order.instDesc</td>
+            <td>@order.instType</td>
+            <td>$@order.price</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Clients", new { id = order.clientID }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Del", "Delete", "Clients", new { id = order.clientID }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

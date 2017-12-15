@@ -16,3 +16,20 @@
     max-width: 150px;
     margin: 0 auto 20px auto;
 }
+
+table, th, td {
+    border: 1px solid gray;
+}
+
+th {
+    color: white;
+    background-color: darkslategray;
+    border-bottom: solid 3px black !important;
+}
+
+tr:nth-child(even) {
+    background-color: lightcyan;
+}
+tr:nth-child(odd) {
+    background-color: lightsteelblue;
+}

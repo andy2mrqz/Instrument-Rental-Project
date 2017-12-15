@@ -56,35 +56,26 @@ namespace BlowOut.Controllers
         {
             return View(new ClientInstrument() { client = db.Clients.Find(clientID), instrument = db.Instruments.Find(instrumentID)});
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult UpdateData()
+        {
+            IEnumerable<OrderInfo> orderinfo =
+
+                db.Database.SqlQuery<OrderInfo>(
+                    "SELECT i.clientID, " +
+                    "c.firstname + ' ' + c.lastname \"clientName\", " +
+                    "c.address, c.email, c.phone, " +
+                    "i.instDescription \"instDesc\", " +
+                    "i.type \"instType\", " +
+                    "i.price " +
+                    "FROM Instrument i " +
+                    "LEFT JOIN Client c ON i.clientID = c.clientID " +
+                    "WHERE c.clientID IS NOT NULL"
+                    );
+
+            return View(orderinfo);
+        }
     }
 }
-
-/*
-//Find the corresponding new and used IDs/prices so the customer can switch
-//Get the instrument list
-var instList = db.Instruments.ToList();
-
-//Find the new instrument information
-var newquery = from inst in instList
-               where inst.instDescription.Equals(instrument.instDescription)
-               && inst.type.Equals("new")
-               select inst;
-            //Pass the id and price to the viewbag
-            foreach (var inst in newquery)
-            {
-                ViewBag.newID = inst.instrumentID;
-                ViewBag.newPrice = inst.price;
-            }
-
-            //Find the used instrument information
-            var usedquery = from inst in instList
-                            where inst.instDescription.Equals(instrument.instDescription)
-                            && inst.type.Equals("used")
-                            select inst;
-            //Pass the id and price to the viewbag
-            foreach (var inst in usedquery)
-            {
-                ViewBag.usedID = inst.instrumentID;
-                ViewBag.usedPrice = inst.price;
-            }
-*/

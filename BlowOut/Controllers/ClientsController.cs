@@ -11,6 +11,7 @@ using BlowOut.Models;
 
 namespace BlowOut.Controllers
 {
+    [Authorize]
     public class ClientsController : Controller
     {
         private BLOWOUTContext db = new BLOWOUTContext();
@@ -111,6 +112,17 @@ namespace BlowOut.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Client client = db.Clients.Find(id);
+            Instrument instrument = db.Instruments.FirstOrDefault(i => i.clientID == id);
+
+            if (instrument != null)
+            {
+                instrument.clientID = null;
+                if (ModelState.IsValid)
+                {
+                    db.Entry(instrument).State = EntityState.Modified;
+                }
+            }
+            
             db.Clients.Remove(client);
             db.SaveChanges();
             return RedirectToAction("Index");
